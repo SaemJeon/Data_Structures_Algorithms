@@ -1,11 +1,16 @@
 import random
 
-def quick_sort(arr, low, high):
-  if (low < high):
-    q = randomized_partition(arr, low, high)
-    quick_sort(arr, low, q-1)
-    quick_sort(arr, q+1, high)
-  return arr
+def randonmized_select(arr, low, high, i):
+  if low == high:
+    return arr[low]
+  q = randomized_partition(arr, low, high)
+  k = q - low + 1
+  if i == k:
+    return arr[q]
+  elif i < k:
+    return randonmized_select(arr, low, q-1, i)
+  else:
+    return randonmized_select(arr, q+1, high, i-k)
 
 def partition(arr, low, high):
   x = arr[high]
